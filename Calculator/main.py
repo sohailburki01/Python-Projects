@@ -3,6 +3,14 @@ def add(na1, na2):
     return na1 + na2
 
 
+def exponent(ne1, ne2):
+    """This function will return the power of two numbers"""
+    return ne1**ne2
+
+def nth_root(nr1, n):
+    """Getting the nth root of nr1"""
+    return nr1**(1/n)
+
 def subtract(ns1, ns2):
     """ This function will return the difference of two numbers """
     return ns1 - ns2
@@ -22,14 +30,16 @@ operations = {
     "+": add,
     "-": subtract,
     "*": multiply,
-    "/": divide
+    "/": divide,
+    "^": exponent,
+    "√": nth_root
 }
 
 
 def calculator():
     """ This function contains the code that will work as you wish to proceed \
     an operation """
-    num1 = float(input("What's the first number?: "))
+    num1 = float(input("What's the first number?(to pick √, hold alt + 251 (on numpad)): "))
     for symbol in operations:
         print(symbol)
     should_continue = True
@@ -39,10 +49,13 @@ def calculator():
         num2 = float(input("What's the next number?: "))
         calculation_function = operations[operation_symbol]
         answer = calculation_function(num1, num2)
-        print(f"{num1} {operation_symbol} {num2} = {answer}")
+        if operation_symbol == "√":
+            print(f"{num2} {operation_symbol} {num1} = {answer}")
+        else:
+            print(f"{num1} {operation_symbol} {num2} = {answer}")
 
-        if input(f"Type 'y' to continue calculating with {answer}, \
-        or type 'n' to start a new calculation: ") == "y":
+        if input(f"Type 'y' to continue calculating with {answer},\
+             or type 'n' to start a new calculation: ") == "y":
             num1 = answer
         else:
             should_continue = False
