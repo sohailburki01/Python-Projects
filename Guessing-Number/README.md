@@ -1,6 +1,6 @@
 # Guessing-Number
 ### A simple guess the number game to test my learning
-    Hi frnds I am Muhammad Sohail
+    Hi friends I am Muhammad Sohail
     I just started learning Python and was trying
     to put my learning to practice that's why I 
     created this project.
