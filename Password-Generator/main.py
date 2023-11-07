@@ -22,6 +22,9 @@ and 'strong' to get a strong password: "
 
 def weak_password():
     """This function will generate an weak password for you"""
+    letters= [chr(i) for i in range(ord('a'), ord('z') + 1)]
+    print(letters)
+    """
     letters = [
         "a",
         "b",
@@ -51,6 +54,7 @@ def weak_password():
         "y",
         "z",
     ]
+    """
     user_choice = int(input("How long you need your password to be: "))
     password = random.choices(letters, k=user_choice)
     print("Here is your password: " + Fore.RED + "".join(password))
