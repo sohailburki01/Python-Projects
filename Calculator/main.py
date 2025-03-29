@@ -25,6 +25,11 @@ def divide(nd1, nd2):
     """ This function will return the ratio of two numbers """
     return nd1 / nd2
 
+def factorial(Nnumber):
+    """ This function will return facrorial of natural number"""
+    if Nnumber == 1 or Nnumber == 0:
+        return 1
+    return factorial(Nnumber-1)*Nnumber
 
 operations = {
     "+": add,
@@ -32,7 +37,8 @@ operations = {
     "*": multiply,
     "/": divide,
     "^": exponent,
-    "√": nth_root
+    "√": nth_root,
+    "f": factorial,
 }
 
 
@@ -46,7 +52,20 @@ def calculator():
 
     while should_continue:
         operation_symbol = input("Pick an operation: ")
-        num2 = float(input("What's the next number?: "))
+        if operation_symbol == "f":
+            try:
+                answer = factorial(int(num1))
+                print(f"{operation_symbol}({int(num1)}) = {answer}")
+            except ValueError as e:
+                print(f"Error: {e}. Please enter a valid natural number.")
+        else:
+            num2 = float(input("What's the next number?: "))
+            calculation_function = operations[operation_symbol]
+            answer = calculation_function(num1, num2)
+            if operation_symbol == "√":
+                print(f"{num2} {operation_symbol} {num1} = {answer}")
+            else:
+                print(f"{num1} {operation_symbol} {num2} = {answer}")
         calculation_function = operations[operation_symbol]
         answer = calculation_function(num1, num2)
         if operation_symbol == "√":
@@ -61,5 +80,5 @@ def calculator():
             should_continue = False
             calculator()
 
-
-calculator()
+if __name__ == "__main__":
+    calculator()
