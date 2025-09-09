@@ -7,9 +7,11 @@ def exponent(ne1, ne2):
     """This function will return the power of two numbers"""
     return ne1**ne2
 
+
 def nth_root(nr1, n):
     """Getting the nth root of nr1"""
     return nr1**(1/n)
+
 
 def subtract(ns1, ns2):
     """ This function will return the difference of two numbers """
@@ -26,20 +28,27 @@ def divide(nd1, nd2):
     return nd1 / nd2
 
 
+def modulo(nmo1, nmo2):
+    """ This function will return the remainder of the division of two numbers"""
+    return nmo1 % nmo2
+
+
 operations = {
     "+": add,
     "-": subtract,
     "*": multiply,
     "/": divide,
     "^": exponent,
-    "√": nth_root
+    "√": nth_root,
+    "%": modulo
 }
 
 
 def calculator():
     """ This function contains the code that will work as you wish to proceed \
     an operation """
-    num1 = float(input("What's the first number?(to pick √, hold alt + 251 (on numpad)): "))
+    num1 = float(
+        input("What's the first number?(to pick √, hold alt + 251 (on numpad)): "))
     for symbol in operations:
         print(symbol)
     should_continue = True
