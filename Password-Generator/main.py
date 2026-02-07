@@ -1,162 +1,82 @@
-""" The random module help us get random values of our choice """
+"""
+Password Generator Program
+Generates weak, medium, or strong passwords based on user choice
+"""
+
 import random
-from colorama import Fore
+from colorama import Fore, Style
 
 
+# Function to generate a weak password (only lowercase letters)
+def generate_weak_password():
+    letters = "abcdefghijklmnopqrstuvwxyz"
+
+    length = int(input("Enter password length: "))
+
+    # Randomly select letters
+    password = random.choices(letters, k=length)
+
+    print(Fore.GREEN + "Your weak password is: " + "".join(password))
+
+
+# Function to generate a medium password (letters + numbers)
+def generate_medium_password():
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    numbers = "0123456789"
+
+    letter_count = int(input("How many letters do you want? "))
+    number_count = int(input("How many numbers do you want? "))
+
+    # Generate parts of password
+    password_letters = random.choices(letters, k=letter_count)
+    password_numbers = random.choices(numbers, k=number_count)
+
+    # Combine and shuffle
+    password = password_letters + password_numbers
+    random.shuffle(password)
+
+    print(Fore.YELLOW + "Your medium password is: " + "".join(password))
+
+
+# Function to generate a strong password (letters + numbers + symbols)
+def generate_strong_password():
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    numbers = "0123456789"
+    symbols = "~@#$%^&*()?/<>|"
+
+    letter_count = int(input("How many letters do you want? "))
+    number_count = int(input("How many numbers do you want? "))
+    symbol_count = int(input("How many symbols do you want? "))
+
+    # Generate password parts
+    password_letters = random.choices(letters, k=letter_count)
+    password_numbers = random.choices(numbers, k=number_count)
+    password_symbols = random.choices(symbols, k=symbol_count)
+
+    # Combine all and shuffle
+    password = password_letters + password_numbers + password_symbols
+    random.shuffle(password)
+
+    print(Fore.RED + "Your strong password is: " + "".join(password))
+
+
+# Main function to control program flow
 def main():
-    """This is the main function and it calls all the other function
-    depending on user_choice"""
-    user_choice = input(
-        "Type 'weak' to get a weak password, 'medium' to get a medium one \
-and 'strong' to get a strong password: "
-    ).lower()
-    if user_choice == "weak":
-        weak_password()
-    elif user_choice == "medium":
-        medium_password()
-    elif user_choice == "strong":
-        strong_password()
+    print(Style.BRIGHT + "Password Generator")
+    print("Choose password strength: weak / medium / strong")
+
+    choice = input("Enter your choice: ").lower()
+
+    if choice == "weak":
+        generate_weak_password()
+    elif choice == "medium":
+        generate_medium_password()
+    elif choice == "strong":
+        generate_strong_password()
     else:
-        print(Fore.RED + "Invalid Input!")
+        print(Fore.RED + "Invalid choice! Please try again.")
 
 
-def weak_password():
-    """This function will generate an weak password for you"""
-    letters = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-    ]
-    user_choice = int(input("How long you need your password to be: "))
-    password = random.choices(letters, k=user_choice)
-    print("Here is your password: " + Fore.RED + "".join(password))
-
-
-def medium_password():
-    """This function will generate a medium password for you"""
-    letters = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-    ]
-    numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    letter_choice = int(input("How much letters do you want in your password: "))
-    number_choice = int(input("How much numbers do you want in your password: "))
-    letter_password = random.choices(letters, k=letter_choice)
-    number_password = random.choices(numbers, k=number_choice)
-    password = letter_password + number_password
-    random.shuffle(password)
-    print("Here is your password: " + Fore.RED + "".join(password))
-
-
-def strong_password():
-    """This function will generate a strong password for you"""
-    letters = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-    ]
-    numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    symbols = [
-        "~",
-        "@",
-        "#",
-        "$",
-        "%",
-        "^",
-        "&",
-        "*",
-        "(",
-        ")",
-        "?",
-        "/",
-        "<",
-        ">",
-        "|",
-    ]
-
-    letter_choice = int(input("How much letters do you want in your password: "))
-    number_choice = int(input("How much numbers do you want in your password: "))
-    symbol_choice = int(input("How much symbols do you want in your password: "))
-    letter_password = random.choices(letters, k=letter_choice)
-    number_password = random.choices(numbers, k=number_choice)
-    symbol_password = random.choices(symbols, k=symbol_choice)
-    password = letter_password + number_password + symbol_password
-    random.shuffle(password)
-    print("Here is your password: " + Fore.RED + "".join(password))
-
-
+# Program execution starts here
 if __name__ == "__main__":
     main()
