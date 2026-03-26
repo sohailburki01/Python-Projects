@@ -1,10 +1,14 @@
-# Calculator
-### A simple calculator to test my learning
+# 🧮 Calculator
 
-    This is a simple calculator where you can 
-    perform basic operations like:
-    Addition
-    Subtraction
-    Multiplication
-    Division
-    
+A simple Python-based calculator built to perform basic arithmetic operations.
+
+## 🚀 Features
+- Addition
+- Subtraction
+- Multiplication
+- Division
+
+## ▶️ How to Run
+
+```bash
+python main.py

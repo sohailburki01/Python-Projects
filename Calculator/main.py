@@ -1,29 +1,20 @@
-def add(na1, na2):
-    """ This function will return the sum of two numbers """
-    return na1 + na2
+def add(a, b):
+    return a + b
+    
+def subtract(a, b):
+    return a - b
 
+def multiply(a, b):
+    return a * b
 
-def exponent(ne1, ne2):
-    """This function will return the power of two numbers"""
-    return ne1**ne2
+def divide(a, b):
+    return a / b
 
-def nth_root(nr1, n):
-    """Getting the nth root of nr1"""
-    return nr1**(1/n)
+def exponent(a, b):
+    return a ** b
 
-def subtract(ns1, ns2):
-    """ This function will return the difference of two numbers """
-    return ns1 - ns2
-
-
-def multiply(nm1, nm2):
-    """ This function will return the product of two numbers """
-    return nm1 * nm2
-
-
-def divide(nd1, nd2):
-    """ This function will return the ratio of two numbers """
-    return nd1 / nd2
+def nth_root(a, n):
+    return a ** (1 / n)
 
 
 operations = {
@@ -36,30 +27,25 @@ operations = {
 }
 
 
-def calculator():
-    """ This function contains the code that will work as you wish to proceed \
-    an operation """
-    num1 = float(input("What's the first number?(to pick √, hold alt + 251 (on numpad)): "))
-    for symbol in operations:
-        print(symbol)
-    should_continue = True
+num1 = float(input("Enter first number: "))
 
-    while should_continue:
-        operation_symbol = input("Pick an operation: ")
-        num2 = float(input("What's the next number?: "))
-        calculation_function = operations[operation_symbol]
-        answer = calculation_function(num1, num2)
-        if operation_symbol == "√":
-            print(f"{num2} {operation_symbol} {num1} = {answer}")
-        else:
-            print(f"{num1} {operation_symbol} {num2} = {answer}")
+for op in operations:
+    print(op)
 
-        if input(f"Type 'y' to continue calculating with {answer},\
-             or type 'n' to start a new calculation: ") == "y":
-            num1 = answer
-        else:
-            should_continue = False
-            calculator()
+while True:
+    op = input("Choose operation: ")
+    num2 = float(input("Enter next number: "))
 
+    result = operations[op](num1, num2)
 
-calculator()
+    if op == "√":
+        print(num2, "√", num1, "=", result)
+    else:
+        print(num1, op, num2, "=", result)
+
+    cont = input("Continue? (y/n): ")
+
+    if cont == "y":
+        num1 = result
+    else:
+        break
