@@ -1,77 +1,57 @@
-""" The random module will help in creating a random choice
-between Rock Paper and sys module help us exit the program """
 import random
-import sys
 
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
 
-def main():
-    """This function calls the play_game function"""
-    print("-- ROCK PAPER SCISSORS --")
-    user_choice = input("Do you wanna play a game of Rock Paper Scissors: ").lower()
-    if user_choice == "yes":
-        play_game()
-    elif user_choice == "no":
-        sys.exit("Bye")
-    else:
-        print("Invalid Input -- Type 'yes' or 'no' ")
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
 
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
 
-def play_game():
-    """This function create a random choice and let
-    you play with the computer"""
-    wins = 0
-    loses = 0
-    while True:
-        all_choices = ["Rock", "Paper", "Scissors"]
-        computer_choice = random.choice(all_choices)
-        user_choice = input("Choose One: Rock | Paper | Scissors: ").title()
+game_images = [rock, paper, scissors]
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+# Note: it's worth checking if the user has made a valid choice before the next line of code.
+# If the user typed somthing other than 0, 1 or 2 the next line will give you an error.
+# You could for example write:
+if user_choice >= 0 and user_choice <= 2:
+    print(game_images[user_choice])
 
-        if user_choice == computer_choice:
-            print(
-                f"Your choice: {user_choice} || Computer choice: {computer_choice} -- Match Tie!"
-            )
-        elif user_choice == "Rock" and computer_choice == "Paper":
-            print("Paper wins against Rock")
-            print(
-                f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Lose!"
-            )
-            loses += 1
-        elif user_choice == "Paper" and computer_choice == "Rock":
-            print("Paper wins against Rock")
-            print(
-                f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Win!"
-            )
-            wins += 1
-        elif user_choice == "Rock" and computer_choice == "Scissors":
-            print("Rock wins against Scissors")
-            print(
-                f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Win!"
-            )
-            wins += 1
-        elif user_choice == "Scissors" and computer_choice == "Rock":
-            print("Rock wins against Scissors")
-            print(
-                f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Lose!"
-            )
-            loses += 1
-        elif user_choice == "Scissor" and computer_choice == "Paper":
-            print("Scissors wins against Paper")
-            print(
-                f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Win!"
-            )
-            wins += 1
-        elif user_choice == "Paper" and computer_choice == "Scissors":
-            print("Scissors wins against Paper")
-            print(
-                f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Lose!"
-            )
-            loses += 1
+computer_choice = random.randint(0, 2)
+print("Computer chose:")
+print(game_images[computer_choice])
 
-        if wins >= 3:
-            sys.exit("Congratulation! You won the game.")
-        elif loses >= 3:
-            sys.exit("Oops! Computer won the game. You Lose.")
+if user_choice >= 3 or user_choice < 0:
+    print("You typed an invalid number. You lose!")
+elif user_choice == 0 and computer_choice == 2:
+    print("You win!")
+elif computer_choice == 0 and user_choice == 2:
+    print("You lose!")
+elif computer_choice > user_choice:
+    print("You lose!")
+elif user_choice > computer_choice:
+    print("You win!")
+elif computer_choice == user_choice:
+    print("It's a draw!")
+    
+       
 
-
-if __name__ == "__main__":
-    main()
+    
