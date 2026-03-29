@@ -1,3 +1,7 @@
+logo=r"""░█▀▀░█▀█░█░░░█▀▀░█░█░█░░░█▀█░▀█▀░█▀█░█▀▄
+         ░█░░░█▀█░█░░░█░░░█░█░█░░░█▀█░░█░░█░█░█▀▄
+         ░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀░▀
+"""
 def add(na1, na2):
     """ This function will return the sum of two numbers """
     return na1 + na2
@@ -24,7 +28,12 @@ def multiply(nm1, nm2):
 def divide(nd1, nd2):
     """ This function will return the ratio of two numbers """
     return nd1 / nd2
-
+def modulus(nu1,nu2):
+    """This function will return the modulus of two numbers"""
+    return nu1%nu2
+def floor(np1,np2):
+    """This function will return floor division of two numbers"""
+    return np1//np2
 
 operations = {
     "+": add,
@@ -32,7 +41,9 @@ operations = {
     "*": multiply,
     "/": divide,
     "^": exponent,
-    "√": nth_root
+    "√": nth_root,
+    "%":modulus,
+    "//":floor,
 }
 
 
