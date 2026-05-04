@@ -1,65 +1,60 @@
-def add(na1, na2):
-    """ This function will return the sum of two numbers """
-    return na1 + na2
+class Calculator:
+    def __init__(self):
+        self.value = 0
+
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+    def divide(self, a, b):
+        if b == 0:
+            raise ValueError("Cannot divide by zero")
+        return a / b
+
+    def square_root(self, a):
+        return a ** 0.5
 
 
-def exponent(ne1, ne2):
-    """This function will return the power of two numbers"""
-    return ne1**ne2
+def run_calculator():
+    calc = Calculator()
 
-def nth_root(nr1, n):
-    """Getting the nth root of nr1"""
-    return nr1**(1/n)
+    operations = {
+        "+": calc.add,
+        "-": calc.subtract,
+        "*": calc.multiply,
+        "/": calc.divide,
+        "√": calc.square_root
+    }
 
-def subtract(ns1, ns2):
-    """ This function will return the difference of two numbers """
-    return ns1 - ns2
+    num1 = float(input("What's the first number?: "))
 
+    while True:
+        print("Available operations:")
+        for symbol in operations:
+            print(symbol)
 
-def multiply(nm1, nm2):
-    """ This function will return the product of two numbers """
-    return nm1 * nm2
-
-
-def divide(nd1, nd2):
-    """ This function will return the ratio of two numbers """
-    return nd1 / nd2
-
-
-operations = {
-    "+": add,
-    "-": subtract,
-    "*": multiply,
-    "/": divide,
-    "^": exponent,
-    "√": nth_root
-}
-
-
-def calculator():
-    """ This function contains the code that will work as you wish to proceed \
-    an operation """
-    num1 = float(input("What's the first number?(to pick √, hold alt + 251 (on numpad)): "))
-    for symbol in operations:
-        print(symbol)
-    should_continue = True
-
-    while should_continue:
         operation_symbol = input("Pick an operation: ")
-        num2 = float(input("What's the next number?: "))
-        calculation_function = operations[operation_symbol]
-        answer = calculation_function(num1, num2)
+
         if operation_symbol == "√":
-            print(f"{num2} {operation_symbol} {num1} = {answer}")
+            result = operations[operation_symbol](num1)
+            print(f"√{num1} = {result}")
         else:
-            print(f"{num1} {operation_symbol} {num2} = {answer}")
+            num2 = float(input("What's the next number?: "))
+            result = operations[operation_symbol](num1, num2)
+            print(f"{num1} {operation_symbol} {num2} = {result}")
 
-        if input(f"Type 'y' to continue calculating with {answer},\
-             or type 'n' to start a new calculation: ") == "y":
-            num1 = answer
+        choice = input(f"Type 'y' to continue with {result}, or 'n' to exit: ")
+
+        if choice == "y":
+            num1 = result
         else:
-            should_continue = False
-            calculator()
+            break
 
 
-calculator()
+if __name__ == "__main__":
+    run_calculator() 
