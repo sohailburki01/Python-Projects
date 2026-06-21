@@ -5,11 +5,26 @@ def add(na1, na2):
 
 def exponent(ne1, ne2):
     """This function will return the power of two numbers"""
-    return ne1**ne2
+    """if base is 1 or the exponent is 0 it directly return 1"""
+    if ne1 == 1 or ne2 == 0:
+        return 1
+    """if base is 0 it returns 0"""
+    elif ne1 == 0:
+        return 0
+    else:
+        return ne1**ne2
+        
 
 def nth_root(nr1, n):
     """Getting the nth root of nr1"""
-    return nr1**(1/n)
+    if nr1 == 1:
+        return 1
+    elif nr1 == 0:
+        return 0
+    elif nr2 == 0:
+        return False
+    else:
+        return nr1**(1/n)
 
 def subtract(ns1, ns2):
     """ This function will return the difference of two numbers """
@@ -23,9 +38,10 @@ def multiply(nm1, nm2):
 
 def divide(nd1, nd2):
     """ This function will return the ratio of two numbers """
-    return nd1 / nd2
-
-
+    if nd2 == 0:
+        return False
+    else:
+        return nd1 / nd2
 operations = {
     "+": add,
     "-": subtract,
