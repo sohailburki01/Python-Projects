@@ -48,6 +48,10 @@ def calculator():
         operation_symbol = input("Pick an operation: ")
         num2 = float(input("What's the next number?: "))
         calculation_function = operations[operation_symbol]
+        if operation_symbol == "/" and {num2} == 0:
+            print("\n\tDivision by zero\n")
+            num2 = 1
+            """this reassign num2 to 1 if dividing by 0"""
         answer = calculation_function(num1, num2)
         if operation_symbol == "√":
             print(f"{num2} {operation_symbol} {num1} = {answer}")
