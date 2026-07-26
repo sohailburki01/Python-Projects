@@ -25,14 +25,24 @@ def divide(nd1, nd2):
     """ This function will return the ratio of two numbers """
     return nd1 / nd2
 
-
+def factorial(num):
+    if num<0:
+        raise ValueError("Factorial is not defined for negative numbers")
+    factorial=1
+    if(num==0):
+        return 1
+    while num!=0:
+        factorial*=num
+        num-=1
+    return factorial
 operations = {
     "+": add,
     "-": subtract,
     "*": multiply,
     "/": divide,
     "^": exponent,
-    "√": nth_root
+    "√": nth_root,
+    "!": factorial
 }
 
 
@@ -46,10 +56,17 @@ def calculator():
 
     while should_continue:
         operation_symbol = input("Pick an operation: ")
-        num2 = float(input("What's the next number?: "))
-        calculation_function = operations[operation_symbol]
-        answer = calculation_function(num1, num2)
-        if operation_symbol == "√":
+        if operation_symbol!='!':
+            num2 = float(input("What's the next number?: "))
+            calculation_function = operations[operation_symbol]
+            answer = calculation_function(num1, num2)
+        else:
+            answer=factorial(int(num1))
+        if operation_symbol=='!':
+            if num1!=int(num1):
+                raise ValueError("Factorial is only defined for integers")
+            print(f"{num1}! = {answer}")
+        elif operation_symbol == "√":
             print(f"{num2} {operation_symbol} {num1} = {answer}")
         else:
             print(f"{num1} {operation_symbol} {num2} = {answer}")
