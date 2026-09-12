@@ -54,7 +54,7 @@ def play_game():
                 f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Lose!"
             )
             loses += 1
-        elif user_choice == "Scissor" and computer_choice == "Paper":
+        elif user_choice == "Scissors" and computer_choice == "Paper":
             print("Scissors wins against Paper")
             print(
                 f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Win!"
@@ -66,6 +66,8 @@ def play_game():
                 f"Your choice: {user_choice} || Computer choice: {computer_choice} -- You Lose!"
             )
             loses += 1
+        else:
+            print("Invalid choice! Please choose Rock, Paper, or Scissors.")
 
         if wins >= 3:
             sys.exit("Congratulation! You won the game.")
