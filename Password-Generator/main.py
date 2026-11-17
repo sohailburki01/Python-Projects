@@ -3,8 +3,8 @@ import random
 from colorama import Fore
 
 """This initializes all the common static variables that every function need"""
-letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
-numbers = [str(i) for i in range(1,10)]
+letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
+numbers = [str(i) for i in range(10)]
 symbols = [
         "~",
         "@",
