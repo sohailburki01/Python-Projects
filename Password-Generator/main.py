@@ -4,7 +4,7 @@ from colorama import Fore
 
 """This initializes all the common static variables that every function need"""
 letters = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
-numbers = [i for i in range(1,10)]
+numbers = [str(i) for i in range(1,10)]
 symbols = [
         "~",
         "@",
