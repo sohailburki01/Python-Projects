@@ -2,6 +2,26 @@
 import random
 from colorama import Fore
 
+#This initializes all the common static variables that every function need
+letters = [chr(i) for i in range(ord('a'), ord('z') + 1)]
+numbers = [str(i) for i in range(10)]
+symbols = [
+        "~",
+        "@",
+        "#",
+        "$",
+        "%",
+        "^",
+        "&",
+        "*",
+        "(",
+        ")",
+        "?",
+        "/",
+        "<",
+        ">",
+        "|",
+    ]
 
 def main():
     """This is the main function and it calls all the other function
@@ -22,35 +42,6 @@ and 'strong' to get a strong password: "
 
 def weak_password():
     """This function will generate an weak password for you"""
-    letters = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-    ]
     user_choice = int(input("How long you need your password to be: "))
     password = random.choices(letters, k=user_choice)
     print("Here is your password: " + Fore.RED + "".join(password))
@@ -58,36 +49,6 @@ def weak_password():
 
 def medium_password():
     """This function will generate a medium password for you"""
-    letters = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-    ]
-    numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     letter_choice = int(input("How much letters do you want in your password: "))
     number_choice = int(input("How much numbers do you want in your password: "))
     letter_password = random.choices(letters, k=letter_choice)
@@ -99,54 +60,6 @@ def medium_password():
 
 def strong_password():
     """This function will generate a strong password for you"""
-    letters = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-    ]
-    numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    symbols = [
-        "~",
-        "@",
-        "#",
-        "$",
-        "%",
-        "^",
-        "&",
-        "*",
-        "(",
-        ")",
-        "?",
-        "/",
-        "<",
-        ">",
-        "|",
-    ]
-
     letter_choice = int(input("How much letters do you want in your password: "))
     number_choice = int(input("How much numbers do you want in your password: "))
     symbol_choice = int(input("How much symbols do you want in your password: "))
